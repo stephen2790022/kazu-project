@@ -1,0 +1,21 @@
+<div class="container d-flex justify-content-around">
+  <div class="row justify-content-between">
+      <% @mangas.each do |manga|%>
+        <article class="card-manga card--1">
+          <div class="card-img" style="background-image: url('<%= manga.image_url %>')"></div>
+            <a href="<%= manga_path(manga) %>" class="card_link">
+          <div class="card-img-hover" style="background-image: url('<%= manga.image_url %>')"></div>
+          </a>
+          <div class="card-info">
+            <h3 class="card-title card-index"><% if @all_libraries.include?(manga.id) %><%= image_tag 'available.png', class:"available"%><% end %> <%= manga.title.capitalize %></h3>
+            <h5><blockquote class="block">par <%=manga.author%></blockquote></h5>
+          <%= link_to "Voir le manga", manga_path(manga), class: 'btn btn-outline-secondary der'%>
+          </div>
+        </article>	
+      <% end %>
+    </div>
+  </div>
+  <div class="container-fluid pagy-position mb-5">
+    <%= pagy_nav(@pagy).html_safe%>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @username %> !</h1>
+    <h3>
+        Bonne nouvelle ! 
+    </h3>
+     <p>
+        <strong><%= @item.user.name.capitalize %></strong> (<%= @item.user.email %>) vient d'accepter ta demande d'échange concernant du manga : <%= @item.manga.title.capitalize %> !
+    </p>
+     <p>
+        Tu as été débité d'un token, tu n'as plus qu'à attendre ton livre !
+    </p>
+    <br/>
+  
+    <p> À très vite sur vite sur http://kasu-project.herokuapp.com ! </p>
+  </body>
+</html>

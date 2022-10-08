@@ -1,0 +1,35 @@
+<div class="container d-flex justify-content-around">
+  <div class="row justify-content-between">
+    <div class="col-9 card-all">
+      <% @items.each do |item|%>
+      <% if item.user != current_user %>
+        <article class="card-manga card--1">
+          <div class="card-img" style="background-image: url('<%= item.manga.image_url %>')"></div>
+            <a href="<%= library_item_path(item) %>" class="card_link">
+          <div class="card-img-hover" style="background-image: url('<%= item.manga.image_url %>')"></div>
+          </a>
+          <div class="card-info">
+            <h3 class="card-title"><%= image_tag 'available.png', class:"available mb-1"%> <%= item.manga.title.capitalize %></h3>
+            <blockquote class="volume-manga">Tome : <%= item.volume %></blockquote>
+          
+            <% item.manga.categories.each do |category| %>
+            <%= link_to category.name, category_path(category.id), class:"block" %>
+            <%end%>
+              <blockquote class="the-user"><small>proposé par <%= item.user.name %></small></blockquote>
+            <%= link_to "Voir son manga", library_item_path(item), class: 'btn btn-outline-secondary der'%>
+          </div>
+        </article>	
+        <% end %>	
+      <% end %>
+    </div>
+    <div class="col-2 justify-content-around mt-5">
+      <%= link_to 'all', root_path  %> <br>
+      <% @categories.each do |category| %>                 
+      <%= link_to category.name, category_path(category) %> <br>  
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid pagy-position mb-5">
+  <%= pagy_nav(@pagy).html_safe%>
+</div>

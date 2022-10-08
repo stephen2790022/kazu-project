@@ -1,0 +1,16 @@
+<a href="<%= manga_path(wish.first.manga)%>"><li class="list-home">
+  <ul>
+    <li>
+      <%= image_tag wish.first.manga.image_url, class: "image-list" %>
+    </li>
+    <li class="position-num">
+      <%= index + 1 %>
+    </li>
+    <li class="title-list">
+      <%= wish.first.manga.title %>
+    </li>
+    <li>
+      <blockquote><%= wish.first.manga.author %></blockquote>
+    </li>
+  </ul>
+</a>

@@ -1,0 +1,42 @@
+
+<div class="container-fluid">
+  <div class="container-fluid research-title">
+    <div class="opacity-img container-fluid">
+    <h2 class="text-center">Voici le résultat de ta recherche</h2>  
+    </div>
+  </div>
+  <div class="container mt-3 all-card-result"> 
+
+          <% @items.each do |result| %>  
+        
+            <% if result.user != current_user %>
+							<article class="card-manga card--1">
+								<div class="card-img" style="background-image: url('<%= result.manga.image_url %>')"></div>
+									<a href="<%= library_item_path(result) %>" class="card_link">
+								<div class="card-img-hover" style="background-image: url('<%= result.manga.image_url %>')"></div>
+								</a>
+								<div class="card-info">
+									<h3 class="card-title"><%= image_tag 'available.png', class:"available mb-1"%> <%= result.manga.title.capitalize %></h3>
+									<blockquote class="volume-manga">Tome : <%= result.volume %></blockquote>
+								
+									<% result.manga.categories.each do |category| %>
+									<%= link_to category.name, category_path(category.id), class:"block" %>
+									<%end%>
+                  	<blockquote class="the-user"><small>proposé par <%= result.user.name %></small></blockquote>
+									<%= link_to "Voir son manga", library_item_path(result), class: 'btn btn-outline-secondary der'%>
+								</div>
+							</article>	
+              <% end %>	
+				
+           <% end %>
+    </div>
+  </div>
+
+  <div class="not-in-list mt-3">
+    <div class="opacity-not">
+      <%= image_tag "sig_up.png", class:"img-sign" %>
+      <h3>Le manga que tu veux n'y est pas ? Ajoute-le à ta whishlist  </h5>
+      <a href="<%=mangas_path%>" class="btn btn-primary">Construire ma wishlist </a>
+    </div>
+  </div>
+</div>

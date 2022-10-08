@@ -1,0 +1,37 @@
+<div class="container-form">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">Mot de passe oublié ?</h2>
+      <h4 class="animation a2">Renseigne ton email et on s'occupe du reste !</h4>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form">
+        <div class="animation a3">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" },
+                      :input_html => { :class => 'form-field' } %>
+                      </div>
+        </div>
+
+        <div class="form-actions animation a4">
+          <%= f.button :submit, "Reinitialiser le mot de passe", class:"btn btn-outline-secondary" %>
+        </div>
+      <% end %>
+      <div class="animation a5">
+      <%= render "users/shared/links" %>
+      </div>
+    </div>
+    <div class="right">
+      <%= image_tag 'logo3.png', class:"brand-sign" %>
+    </div>
+</div>
+
+
+
+   
+

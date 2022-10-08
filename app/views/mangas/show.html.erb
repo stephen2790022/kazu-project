@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div class="container-fluid p-5 background-manga text-white">
+    <div class="mr-5">
+      <% if @manga.cover.attached? %>
+        <%= image_tag @manga.cover %>	
+      <% else %>			
+        <img class='img-manga-show' src="<%= @manga.image_url %>" alt="Manga-item">
+      <% end  %>
+    </div>
+    <div class="description-manga ml-5">
+      <h2><%= @manga.title.capitalize %></h2>
+      <h3>  Auteur : <%= @manga.author %> </h3>
+      <h3> Description </h3>
+      <p><%= @manga.description %></p>
+     <!-- <%= link_to "Ajouter à ma Bibliothèque", manga_library_items_path(@manga.id), method: "POST", class:"btn btn-secondary" %> -->
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+        Je propose
+      </button>
+      <!-- Modal Library -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-dark">
+              <h5 class="modal-title" id="exampleModalLabel"><%= @manga.title %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-dark">
+             <%= simple_form_for [@manga, @item], :url => manga_library_items_path(@manga.id), :method => :post do |f| %>
+                <%= f.input :volume, :collection => @all_volumes, :selected => [1..@manga.volume] %>
+                <%= f.input :state_description, :label => "Etat du manga", input_html: { autocomplete: 'off' }, class: "description-form" %>
+        
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+              <%= f.button :submit, 'Ajouter', class: 'btn btn-secondary' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal END -->
+
+   
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">
+        J'ajoute à ma Wishlist
+      </button>
+      <!-- Modal Wishlist -->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-dark">
+              <h5 class="modal-title" id="exampleModalLabel"><strong><%= @manga.title %></strong></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <% if @all_volumes.length != 0 %>
+                <div class="modal-body text-dark">
+                
+                <%= simple_form_for @manga, :url => manga_wishlist_items_path(@manga.id), :method => :post do |f| %>
+                    <%=  f.input :volume, :collection => @all_volumes, :selected => [1..@manga.volume] %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                  <%= f.button :submit, 'Ajouter', class: 'btn btn-secondary' %>
+                  <% end %>
+              <% else %>
+
+                   <div class="modal-body text-dark">
+                    <h5>Ce manga ne contient qu'un seul tome, ajouter le à votre wishlist en cliquant sur le bouton ajouter</h5>
+                <%= simple_form_for @manga, :url => manga_wishlist_items_path(@manga.id), :method => :post do |f| %>
+                   
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                  <%= f.button :submit, 'Ajouter', class: 'btn btn-secondary' %>
+                  <% end %>
+
+
+              <% end %>
+               <!-- Modal END -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+  <% if @items.length == 0 %>
+   <h2 class="text-center mb-4"> Les membres qui proposent ce Manga </h2>
+      <h5 class="text-center"> <em>Aucun utilisateur ne le propose.</em> </h5>
+  <% else %>
+    <h2 class="text-center"> Les membres qui proposent ce Manga </h2>
+    <% end %>
+    <div class="all-show-manga px-5">
+      <% @items.each do |item|%>
+        <article class="card-last-manga card-show-manga card--1">
+          <div class="card__img" style="background-image: url('<%= item.manga.image_url %>')"></div>
+          <a href="<%=library_item_path(item.id)%>" class="card_link">
+            <div class="card__img--hover" style="background-image: url('<%= item.manga.image_url %>')"></div>
+          </a>
+          <div class="card__info">
+            <h3 class="card__title">Tome n° : <%= item.volume %></h3>
+            <h4>Membre : <%= item.user.name %></h4>
+            <%= link_to "Demander ce Manga", library_item_path(item.id), class:"btn btn-outline-secondary my-2" %>
+          </div>
+        </article>
+      <%end%>
+    </div>
+  </div>
+</div>

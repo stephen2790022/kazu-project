@@ -1,0 +1,81 @@
+
+<div class="container-form-edit">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">Modifie ton profil</h2>
+      <h4 class="animation a2">Change les informations que tu veux ici</h4>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form">
+      <div class="animation a3">
+        <%= f.input :email, required: true, autofocus: true, :input_html => { :class => 'form-field' } %>
+      </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <div class="animation a4">
+          <%= f.input :name,
+                      label: 'Pseudo',
+                      hint: "change ton pseudo",
+                      required: false,
+                      input_html: { autocomplete: "Pseudo" },
+                      :input_html => { :class => 'form-field' } %>
+                      </div>
+        <div class="animation a5 mb-3">
+          <h6>Photo de profil</h6>
+          <%= f.file_field :avatar%>
+        </div>
+        <div class="animation a6">
+          <%= f.input :password,
+                      label: 'Mot de passe',
+                      hint: "laisser blanc si vous ne voulez pas le changer",
+                      required: false,
+                      input_html: { autocomplete: "new-password" },
+                      :input_html => { :class => 'form-field' } %>
+        </div>
+        <div class="animation a7">
+          <%= f.input :password_confirmation,
+                      label: 'Confirmer le mot de passe',
+                      required: false,
+                      input_html: { autocomplete: "new-password" },
+                      :input_html => { :class => 'form-field' } %>
+        </div>
+        <div class="animation a8">
+          <%= f.input :current_password,
+                      label: 'Mot de passe actuel',
+                      hint: "nous avons besoins de ton mot de passe actuel pour confirmer les changements",
+                      required: true,
+                      input_html: { autocomplete: "current-password" },:input_html => { :class => 'form-field' } %>
+        </div>
+      </div>
+
+      <div class="form-actions animation a9">
+        <%= f.button :submit, "Modifier",:class => 'btn btn-outline-secondary' %>
+      </div>
+
+    <% end %>
+  
+  <div class="form-actions animation a10">
+    <p>Pas content ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Voulez vous vraiment supprimer votre compte ?" }, method: :delete, class:"action-delete" %></p>
+  </div>
+  </div>
+
+  <div class="right">
+    <%= image_tag 'logo3.png', class:"brand-sign" %>
+  </div>
+</div>
+
+
+
+     
+
+
+
+    
+
+      
+  
+

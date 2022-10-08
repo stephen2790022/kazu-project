@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @username %> !</h1>
+    <p>
+      C'est avec fierté que nous t'annonçons que tu as un match avec <%= @item.user.name %> (<%= @item.user.email %>).
+    </p><br/>
+     <p>
+        Fais lui savoir que tu souhaites son manga en cliquant <a href="https://kasu-project.herokuapp.com/library_items/<%= @item.id %>">ici</a> !
+    </p><br/>
+    <p> À très vite sur vite sur kasu-herokuapp.com </p>
+  </body>
+</html>

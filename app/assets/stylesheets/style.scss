@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* FONT */
+
+h1 {
+  font-family: Nunito;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: Nunito;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: Nunito;
+  font-size: 22px;
+  font-weight: normal;
+  margin-block-end: 0em;
+  padding-bottom: 10px;
+}
+
+h4 {
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+h5 {
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+h6 {
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+p {
+  font-family: Nunito;
+  font-size: 16px;
+}
+
+a {
+  font-family: Nunito;
+  font-size: 16px;
+  color: grey;
+}
+
+a:hover {
+  color: #ff1016;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #ff1016 !important;
+}
+.nav-link {
+  font-weight: 600;
+  color: #b1b1b1;
+}
+
+.lead {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.blockquote {
+  font-family: Nunito;
+  font-size: 21px;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+li {
+  font-size: 14px;
+  font-family: Nunito;
+  display: list-item;
+}
+
+ol {
+  font-size: 14px;
+  font-family: Nunito;
+  display: list-item;
+  padding-inline-start: 10px;
+}
+
+.color-text {
+  text-align: center;
+}
+
+.concept-title {
+  text-align: center;
+  font-size: 40px !important;
+  font-weight: 700;
+}
+
+/* BTN */
+
+.btn-tercery {
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.btn-tercery:hover {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.btn-outline-primary {
+  border-color: #ff1016;
+  color: black;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ff1016;
+  border-color: rgb(94, 94, 94);
+}
+
+.btn-primary {
+  background-color: #ff1016;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.btn-primary:focus {
+  background-color: rgb(41, 41, 41);
+}
+
+.btn-secondary:focus {
+  background-color: rgb(41, 41, 41);
+}
+
+.btn-outline-secondary:focus {
+  background-color: rgb(41, 41, 41);
+}
+
+.btn-secondary {
+  background-color: rgb(94, 94, 94);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.btn-outline-secondary {
+  border-color: rgb(41, 41, 41);
+  color: rgb(41, 41, 41);
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.alert-position {
+  position: fixed;
+  z-index: 30;
+  top: 100px;
+  left: 40%;
+}
+
+.area-contact {
+  resize: none;
+}
+
+.area-contact:focus {
+  border-color: #ff1018bb;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #ff1016;
+  outline: 0 none;
+}

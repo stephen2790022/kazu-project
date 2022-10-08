@@ -1,0 +1,50 @@
+<div class="container-form">
+  <div class="left">
+    <div class="header">
+      <h2 class="animation a1">Changer de mot de passe</h2>
+      <h4 class="animation a2">Renseigne ton nouveau mot de passe ci-dessous</h4>
+    </div>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class="form">
+  <div class="animation a3">
+    <%= f.input :password,
+                label: "New password",
+                required: true,
+                autofocus: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" },
+                :input_html => { :class => 'form-field'} %>
+                </div>
+                <div class="animation a4">
+    <%= f.input :password_confirmation,
+                label: "Confirm your new password",
+                required: true,
+                input_html: { autocomplete: "new-password" },
+                :input_html => { :class => 'form-field'} %>
+                </div>
+  </div>
+
+  <div class="form-actions animation a5">
+    <%= f.button :submit, "Change my password", class:"btn btn-outline-secondary" %>
+  </div>
+<% end %>
+<div class="animation a6">
+<%= render "users/shared/links" %>
+</div>
+  </div>
+  <div class="right">
+    <%= image_tag 'logo3.png', class:"brand-sign" %>
+  </div>
+</div>
+
+
+
+    
+
+

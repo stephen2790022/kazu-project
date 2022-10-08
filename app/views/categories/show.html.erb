@@ -1,0 +1,48 @@
+<div class='container-fluid'>
+  <div class="container-fluid cat-show">
+    <div class="opacity-img">
+      <h2 class='text-center mb-3'> Les mangas disponible à l'échange</h2>
+      <h2 class='text-center'>Dans la catégorie : <%= @category.name %> </h2>
+    </div>
+  </div>
+	
+	<div class="container mt-2">
+		<div class="row m-2 card-all">
+      <div class="col-10 card-all">
+						<% @libraries.each do |item|%>
+						<% if item.user != current_user %>
+							<article class="card-manga card--1">
+								<div class="card-img" style="background-image: url('<%= item.manga.image_url %>')"></div>
+									<a href="<%= library_item_path(item) %>" class="card_link">
+								<div class="card-img-hover" style="background-image: url('<%= item.manga.image_url %>')"></div>
+								</a>
+								<div class="card-info">
+									<h3 class="card-title"><%= image_tag 'available.png', class:"available mb-1"%> <%= item.manga.title.capitalize %></h3>
+									<blockquote class="volume-manga">Tome : <%= item.volume %></blockquote>
+								
+									<% item.manga.categories.each do |category| %>
+									<%= link_to category.name, category_path(category.id), class:"block" %>
+									<%end%>
+                  	<blockquote class="the-user"><small>proposé par <%= item.user.name %></small></blockquote>
+									<%= link_to "Voir son manga", library_item_path(item), class: 'btn btn-outline-secondary der'%>
+								</div>
+							</article>	
+              <% end %>	
+						<% end %>
+					</div>
+      <div class="col-2 justify-content-around mt-5">
+        <%= link_to 'all', library_items_path  %> <br>
+        <% @categories.each do |category| %>                 
+        <%= link_to category.name, category_path(category) %> <br>  
+        <% end %>
+      </div>
+		</div>
+  </div>
+  <div class="container-fluid pagy-position mb-5">
+    <%= pagy_nav(@pagy).html_safe%>
+  </div>
+</div>
+
+
+
+

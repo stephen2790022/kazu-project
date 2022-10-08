@@ -1,0 +1,110 @@
+<header>
+  <div class="container-fluid" id="fond">
+    <%= image_tag 'rectangle1.png', class:"rectangle1 animate__animated animate__fadeInDownBig"%>
+    <%= image_tag 'rouge1.png', class:"rouge1 animate__animated animate__fadeInUpBig"%>
+    <%= image_tag 'rectangle2.png', class:"rectangle2 animate__animated animate__fadeInDownBig"%>
+    <%= image_tag 'rectangle3.png', class:"rectangle3 animate__animated animate__fadeInUpBig"%>
+    <%= image_tag 'rectangle4.png', class:"rectangle4 animate__animated animate__fadeInDownBig"%>
+    <%= image_tag 'rectangle5.png', class:"rectangle5 animate__animated animate__fadeInUpBig"%>
+    <%= image_tag 'rouge2.png', class:"rouge2 animate__animated animate__fadeInDownBig"%>
+    <%= image_tag 'rectangle6.png', class:"rectangle6 animate__animated animate__fadeInUpBig"%>
+    <div class="container-title animate__animated animate__fadeInLeftBig">
+      <h1 class="title">La marketplace des mangas !</h1>
+      <a class="btn btn-tercery" href="<%= mangas_path%>">Découvrez-les</a>
+    </div>
+  </div>
+</header>
+
+<div class="container d-flex justify-content-center">
+ <%= render "shared/searchbar" %>
+</div>
+
+<main>
+  <div class="d-flex justify-content-center">
+    <h2 class="intro m-5 text-center">Rejoins la communauté Kasu et échange tes Mangas en toute simplicité</h2>
+  </div>
+  <div class="container-fluid section1">
+    <div class="row d-flex justify-content-center">
+      <div class="col-xs-12 col-md-3 m-2 text-center">
+        <a class="text-center" href="<%= mangas_path %>"><%= image_tag 'echange.png', class:"icon-explication icon1 mb-4"%></a>
+        <h3><a href='<%= mangas_path %>'class="home_title text-center">1. Créé ta Bibliothèque</a></b></h3>
+        <p class="icon-text d-flex">Met en ligne les mangas que tu souhaites échanger. </p>
+      </div>
+      <div class="col-xs-12 col-md-3 m-2 text-center ">
+        <a class="text-center " href="<%= library_items_path %>"><%= image_tag 'recois.png', class:"icon-explication icon1 mb-4"%></a>
+        <h3> <a class="home_title text-center" href='<%= library_items_path %>'>2. Trouve des Mangas</a></b></h3>
+        <p class="icon-text d-flex">Trouve le Manga de tes rêves ou ajoute-le à ta Wishlist.
+      </div>
+      <div class="col-xs-12 col-md-3 m-2 text-center">
+        <a class="text-center" href="<%= library_items_path %>"><%= image_tag 'achete.png', class:"icon-explication icon1 mb-4"%></a>
+        <h3><a class="home_title text-center" href='<%= mangas_path %>'>3. Echange</a></b></h3>
+        <p class="icon-text d-flex">Reçois des "Matchs" par email et échange grâce au kasu points. </p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="section2">
+    <h2 class="text-center">Les derniers mangas ajoutés</h2>
+    <div class="container d-flex justify-content-around">
+      <%= render "card" %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= link_to "Les mangas disponibles", library_items_path, class: 'btn btn-outline-dark'%>
+
+    </div>
+  </div>
+
+  <div class="section5">
+    <ul class="group-list-home">
+      <li class="list-title">Les mangas les plus demandés</li>
+      <% @most_wish.each_with_index do |wish, index| %>
+        <%= render "list-home", wish: wish, index: index %>
+      <% end %>
+      </ul>
+    <ul class="group-list-home">
+      <li class="list-title">
+        Les mangas les plus échangés
+      </li>
+      <% @most_lib.each_with_index do |wish, index| %>
+   
+        <%= render "list-home", wish: wish, index: index %>
+
+      <% end %>
+    </ul>
+    <ul class="group-list-home">
+      <li class="list-title">A découvrir</li>
+      <% @discovery.each_with_index do |wish, index| %>
+        <a href="<%= library_item_path(wish)%>"><li class="list-home">
+          <ul>
+            <li>
+              <%= image_tag wish.manga.image_url, class: "image-list" %>
+            </li>
+            <li class="position-num">
+              <%= index + 1 %>
+            </li>
+            <li class="cut title-list">
+              <%= wish.manga.title %>
+            </li>
+            <li>
+              <blockquote><%= wish.manga.author %></blockquote>
+            </li>
+          </ul>
+        </a>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="section3">
+  <div class="container">
+    <h2 class="text-center">Les nouveaux membres</h2>
+    <%= render "card-user" %>
+    </div>
+  </div>
+
+  <div class="section4">
+    <%= image_tag "sig_up.png", class:"img-sign" %>
+    <h4>Toi aussi rejoins la communauté et échange en toute simplicité !</h4>
+    <a href="<%=new_user_registration_path%>" class="btn btn-danger">s'inscrire</a>
+  </div>
+
+</main>

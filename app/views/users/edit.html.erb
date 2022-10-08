@@ -1,0 +1,34 @@
+<div class="mt-5 pt-5">
+
+<div class="container">
+
+
+        <%= image_tag 'profile_banner.png', class:"rectangle1 animate__animated animate__fadeInDownBig"%>
+
+    <div class="row">
+        <h4 class="mt-1">Changer de pseudo</h4>
+        <%= simple_form_for @user do |f| %>
+            <div class="form-inputs">
+                <%= f.input :name, label: false %>
+            </div>
+            <%= f.button :submit, "changer",class: "btn-primary" %>
+        <% end %>
+    </div>
+
+
+<ul>
+<% @user_collection.each do |item| %>
+    <li> <%= item.manga.title.capitalize %> <%= item.manga.author %> <%= item.id %>  <%= link_to "Supprimer de ma bibliothèque", library_item_path(item.id), method: "delete",  :data => {:confirm => 'Êtes-vous sûr de vouloir supprimer ce manga?'} %>
+        <br/><%= link_to "Consulter la page de votre manga", library_item_path(item.id) %>
+    </li>
+
+<% end %>
+
+<%= link_to "Ajouter un manga à votre collection", mangas_path, class: 'btn btn-primary' %>
+</ul>
+
+
+
+
+</div>
+</div>

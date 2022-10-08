@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" id="navbar">
+  <a href='<%= root_path%>' class="brand-link mr-4"><%= image_tag 'logo3.png', class:"brand", size: "60x60" %></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <%= link_to "Accueil", root_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+          <%= link_to "Mangas", mangas_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+          <%= link_to "Bibliothèque", library_items_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+          <%= link_to "Concept", static_pages_concept_page_path, class: 'nav-link' %>
+      </li>
+    </ul>
+
+      <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+      <% if user_signed_in?%>
+        <% if current_user.name == "Guest" %>
+              <li class="pt-2 mr-1"> <%= current_user.name %>
+                <%= link_to "changer", edit_user_registration_path(current_user) %>
+              </li>
+        <% end  %>
+        <% if current_user && current_user.is_admin == true%>
+          <li class="nav-item active">
+            <%= link_to "Admin dashboard", rails_admin_path, class:"nav-link" %>
+          </li>
+        <% end %>
+          <li class="nav-item active">
+          <% if @conversation != nil %>
+            <a href='<%= conversation_messages_path(@conversation) %>' class='nav-link active' >Messages
+              <% if !@conversation.unread_message_count(current_user).zero? %>
+                (<%= @conversation.unread_message_count(current_user) %>)
+              <% end %>
+            </a>
+          <% end %>
+          </li>
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profil/Quitter
+          </a>
+          <div class="dropdown-menu menu-nav" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item menu-nav" <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></a>
+            <a class="dropdown-item menu-nav" <%= link_to "Profil", user_path(current_user) %></a>
+          </div>
+        </li>
+        <% else %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Se Connecter/S'inscrire
+          </a>
+          <div class="dropdown-menu menu-nav" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item menu-nav" href="<%=new_user_session_path%>">Se connecter</a>
+            <a class="dropdown-item menu-nav" href="<%=new_user_registration_path%>">S'inscrire</a>
+          </div>
+        <% end %>
+    </ul> 
+  </div>
+</nav>

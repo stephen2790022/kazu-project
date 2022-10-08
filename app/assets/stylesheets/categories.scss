@@ -1,0 +1,15 @@
+// Place all the styles related to the Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category-card {
+  font-size: 12px;
+}
+
+.cat-show {
+  background-image: url("https://dw9to29mmj727.cloudfront.net/sections/2016/24907-READ_header_2000x800_options_colours_grey30.png");
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

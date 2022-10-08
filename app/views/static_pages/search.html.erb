@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="container-fluid research-title">
+    <h2 class="text-center">Voici le résultat de ta recherche</h2>  
+  </div>
+  <div class="container-fluid m-3 all-card-result">
+
+    <% @results.each do |result| %>
+      <article class="card-manga card--1">
+        <div class="card-img" style="background-image: url('<%= result.image_url %>')"></div>
+        <a href="<%= manga_path(result) %>" class="card_link">
+          <div class="card-img-hover" style="background-image: url('<%= result.image_url %>')"></div>
+        </a>
+        <div class="card-info">
+          <h3 class="card-title card-index">
+          <%= image_tag 'available.png', class:"available"%><%= result.title.capitalize %></h3>
+          <h5><blockquote class="block">par <%=result.author%></blockquote></h5>            
+          <%= link_to "Voir le manga", manga_path(result), class: 'btn btn-outline-secondary der'%>
+        </div>
+      </article>	
+    <% end %>
+  </div>
+
+  <div class="section5">
+    <%= image_tag "sig_up.png", class:"img-sign" %>
+    <h3><b>Toi aussi rejoins la communauté et échange en toute simplicité !</b></h3>
+    <a href="<%=new_user_registration_path%>" class="btn btn-danger">s'inscrire</a>
+  </div>
+</div>

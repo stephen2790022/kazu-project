@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center pt-2" >
+  <div class="search_bar mt-5" >
+      <%= form_tag(search_page_path, :method => "get",   
+      class: 'navbar-form navbar-left') do %>  
+        <div class="input-group my-2">  
+          <%= search_field_tag :search, params[:search], placeholder: "Tape le manga que tu recherches/proposes", class: "form-control" %>  
+          <div class="input-group-btn mx-3">  
+            <%= button_tag "Je trouve", :class => 'btn btn-danger glyphicon glyphicon-search',:name => nil%>  
+          </div>  
+        </div>  
+      <% end %>
+  </div>
+</div>

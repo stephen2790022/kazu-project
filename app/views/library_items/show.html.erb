@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="container-fluid p-5 background-items">
+    <div>
+      <h2 class="text-center m-1"> 
+        Le manga    <strong><%= @item.manga.title.capitalize %></strong> de <strong><%= @item.user.name %> </strong>
+      </h2>
+    </div>
+    <div class="containers-item mt-5">
+      <div class="mr-5">
+        <img src="<%= @item.manga.image_url %>">
+      </div>
+
+      <div class="description-item ml-5">
+        <div class="d-flex justify-content-between">
+        <h3>Titre : <%= @item.manga.title %></h3>
+        </div>
+        <h3>Propriétaire : <%= @item.user.name %></h3>
+        <h3>Tome : <%= @item.volume %></h3>
+        <h4>Etat : <%= @item.state_description %></h4>
+        <%= link_to 'Voir la description', manga_path(@item.manga), class: 'btn btn-outline-secondary'%>
+        <% if current_user.token_state <= 0%>
+          <p class="mt-4"><strong>Vous n'avez pas assez de kasu points pour une demande à <%= @item.user.name %>.</strong></p>
+        <% else%>
+          <% if current_user != @item.user %>
+            <%= link_to 'Faire une demande', conversations_path(sender_id: current_user.id, receiver_id: @item.user.id, library_item_id: @item.id), method: :post, class: 'btn btn-danger' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pt-5">
+    <h2 class="text-center"> Les autres mangas de <%= @item.user.name %></h2>
+
+    <div class="all-show-manga px-5">
+      <% @item.user.library_items.each do |item| %>
+        <% if item.manga.title != @item.manga.title %>
+
+          <article class="card-show-item card--1">
+            <div class="card__img" style="background-image: url('<%= item.manga.image_url %>')"></div>
+            <a href="<%=library_item_path(item.id)%>" class="card_link">
+              <div class="card__img--hover" style="background-image: url('<%= item.manga.image_url %>')"></div>
+            </a>
+            <div class="card__info">
+              <h5 class="card__title"><%= item.manga.title %></h5>
+              <h5 class="card__title">tome n° : <%= item.volume %></h5>
+              <%= link_to "Voir", library_item_path(item.id), class:"btn btn-outline-secondary my-2" %>
+            </div>
+          </article>
+
+        <% end  %>
+      <% end %>
+    </div>
+  </div>
+</div>

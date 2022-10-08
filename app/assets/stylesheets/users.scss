@@ -1,0 +1,232 @@
+.li-collection:hover {
+    background-color: rgba(103, 128, 159, 0.3);
+}
+
+.trash-icon{
+    text-decoration: none;
+    color: red;
+}
+
+.profile-banner {
+    background-image: url(asset-path('profile_banner.png'));
+    width: 100%;
+    height: 380px;
+}
+
+.big-circle {
+    background-color: #aba8a8;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.small-circle {
+    background-color: red;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+}
+
+.small-circle-lib {
+  background-color: red;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+// ******************
+//      FORM
+// ******************
+
+.links-form{
+  color: rgb(94, 94, 94);
+}
+
+.links-form:hover{
+  text-decoration: none;
+  color: #ff1016;
+}
+
+.container-form {
+  display: flex;
+  height: 100vh;
+}
+
+.container-form-edit {
+  display: flex;
+}
+
+.left {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  animation-name: left;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+}
+
+.right {
+  flex: 1;
+  background-color: black;
+  transition: 1s;
+  background-image: url(https://dw9to29mmj727.cloudfront.net/sections/2016/24907-READ_header_2000x800_options_colours_grey30.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.brand-sign{
+  position: relative;
+  top: 20%;
+  left: 40%;
+  width: 400px;
+}
+
+.header > h2 {
+  margin: 0;
+  color: rgb(41, 41, 41);
+}
+
+.header > h4 {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  font-size: 15px;
+  color: rgba(0,0,0,.4);
+}
+
+.form {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form > p {
+  text-align: right;
+}
+
+.form > p > a {
+  color: #000;
+  font-size: 14px;
+}
+
+.form-field {
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  outline: 0;
+  transition: .2s;
+  margin-top: 0px;
+}
+
+.form-actions{
+  margin-bottom: 20px;
+}
+
+.action-delete{
+  color: #ff1016;
+}
+
+.action-delete:hover{
+  color: rgb(41, 41, 41);
+  text-decoration: none;
+
+}
+
+.animation {
+  animation-name: move;
+  animation-duration: .4s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+.a1 {
+  animation-delay: 2s;
+}
+
+.a2 {
+  animation-delay: 2.1s;
+}
+
+.a3 {
+  animation-delay: 2.2s;
+}
+
+.a4 {
+  animation-delay: 2.3s;
+}
+
+.a5 {
+  animation-delay: 2.4s;
+}
+
+.a6 {
+  animation-delay: 2.5s;
+}
+
+.a7 {
+  animation-delay: 2.6s;
+}
+
+.a8{
+  animation-delay: 2.7s;
+}
+
+.a9{
+  animation-delay: 2.8s;
+}
+
+.a10{
+  animation-delay: 2.9s;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes left {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 500px;
+  }
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: #ff1018bb;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #ff1016;
+  outline: 0 none;
+}

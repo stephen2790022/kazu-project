@@ -1,0 +1,17 @@
+<div class="m-2 card-user-all">
+  
+  <% @user.each do |user|%>
+  
+    <div class="card-user">
+      <%if user.avatar.attached?%>
+        <%= image_tag user.avatar, class: "img-user" %>
+      <% else %>
+        <%= image_tag "kirua.jpg", class: "img-user" %>
+      <%end%>
+      <p class="card-time"><%= time_ago_in_words(user.created_at) %></p>
+      <h4 class="card-title"><%= user.name %></h4>
+    </div>
+      
+  <% end %>
+  
+</div>
