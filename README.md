@@ -34,11 +34,3 @@ Quand tu échanges un livre, tu reçois un Kasu point qui te permettra à ton to
 Choisis
 J'indique les livres que je possède en entrant simplement les mangas dans la bibliothèque ou en cliquant sur le bouton "ajouter un manga". Lorsqu'un membre souhaite un de mes livres, je lui expédie et je gagne 1 kasu Point par livre. Avec celui-ci je commande les livres que je désire.
 
-
-L'équipe qui a contribué a la réalisation du projet 
-
-* Dylan 
-* Stephen
-* Gaëtan
-* Youcef
-* Jules
